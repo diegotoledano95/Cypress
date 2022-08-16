@@ -3,7 +3,7 @@ describe('home page', () => {
   beforeEach('visits localhost',()=>{
     cy.visit('http://localhost:3000')
     })
-  context('hero section', () => {
+  context('Hero section', () => {
     it('getting by element with command clean up', () => {
       cy.getByData("hero-heading").contains('Testing Next.js Applications with Cypress')
     })
