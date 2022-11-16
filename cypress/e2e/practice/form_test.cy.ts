@@ -1,3 +1,5 @@
+import {  } from "module";
+
 describe('subscription form test',() => {
     beforeEach('visits local host', () =>{
         cy.visit('http://localhost:3000')
