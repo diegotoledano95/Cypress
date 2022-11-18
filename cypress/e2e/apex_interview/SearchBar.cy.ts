@@ -1,4 +1,4 @@
-import { testData } from '../../fixtures/testData'
+import { testDataSearch } from '../../fixtures/testData'
 import homePage from '../../pages/homePage'
 
 Cypress.on('uncaught:exception', (err, runnable) => {
@@ -16,34 +16,35 @@ describe('Search Bar',() => {
         })
     })
 
-    it.skip('should search product', () =>{
-        homePage.typeSearch(testData.firstProduct);
-        cy.url().should('eq', testData.firstSearchUrl);
-        homePage.checkResult1(0, testData.firstProduct);
-        homePage.checkResult1(1, testData.firstProduct);
-        homePage.checkResult1(2, testData.firstProduct);
-        homePage.checkResult1(3, testData.firstProduct);
+    it('should search product', () =>{
+        homePage.typeSearch(testDataSearch.firstProduct);
+        homePage.checkUrl(testDataSearch.firstSearchUrl)
+        cy.url().should('eq', testDataSearch.firstSearchUrl);
+        homePage.checkResult1(0, testDataSearch.firstProduct);
+        homePage.checkResult1(1, testDataSearch.firstProduct);
+        homePage.checkResult1(2, testDataSearch.firstProduct);
+        homePage.checkResult1(3, testDataSearch.firstProduct);
         homePage.clearSearch();
     });
 
-    it.skip('API response', () =>{
+    it('API response', () =>{
 
-        cy.querySearch(testData.firstProduct).then((response)=>{
-            expect(response.body.mainContent.records[0]._t).to.contain(testData.firstProduct);          
+        cy.querySearch(testDataSearch.firstProduct).then((response)=>{
+            expect(response.body.mainContent.records[0]._t).to.contain(testDataSearch.firstProduct);          
         })
     });
 
-    it.skip('should notify product does not exist', () =>{
+    it('should notify product does not exist', () =>{
 
-        homePage.typeSearch(testData.not_found_string);
-        homePage.nullProductMessage(testData.not_found_string);
+        homePage.typeSearch(testDataSearch.not_found_string);
+        homePage.nullProductMessage(testDataSearch.not_found_string);
         homePage.clearSearch()
     });
 
     it('brand, ph characteristics and model search', () =>{
 
-        homePage.typeSearch(testData.secondProduct);
-        homePage.checkUrl(testData.secondSearchUrl)
+        homePage.typeSearch(testDataSearch.secondProduct);
+        homePage.checkUrl(testDataSearch.secondSearchUrl)
         homePage.checkResult2(0)
         homePage.clearSearch()
     });
