@@ -36,3 +36,18 @@
 //   }
 // }
 
+Cypress.Commands.add('querySearch', (operationVariables) => {    
+    return cy.request({
+      url: 'https://www.liverpool.com.mx/getSearchFacadeService',
+      method:'GET',
+      headers:{
+        'Content-type': 'application/json',
+        'Accept': 'application/json, text/plain, */*',
+        'User-Agent': 'axios/0.18.0'
+      },
+      body: {
+        query: operationVariables
+      },
+      failOnStatusCode: false
+    });
+  });

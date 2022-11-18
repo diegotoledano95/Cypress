@@ -35,3 +35,9 @@ export interface MultipleChoiceChallenge extends Challenge {
   answers: []
   correctAnswerIndex: string
 }
+
+declare namespace Cypress {
+  interface Chainable {
+    querySearch(operationVariables: any): Chainable<any>;
+  }
+}

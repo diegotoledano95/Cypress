@@ -3,6 +3,6 @@
 
 declare namespace Cypress {
     interface Chainable {
-      getByData(dataTestAttribute: string): Chainable<JQuery<HTMLElement>>
+      querySearch(operationVariables: any): Chainable<any>;
     }
   }

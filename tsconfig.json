@@ -2,7 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["../cypress/*"]
+      "*": [
+        "types/*.d.ts"
+      ]
     },
     "target": "es5",
     "lib": [
@@ -19,33 +21,28 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["cypress","node"],
-    "experimentalDecorators": true
+    "types": ["cypress"]
   },
   "ts-node": {
     // these options are overrides used only by ts-node
     // same as our --compilerOptions flag and our TS_NODE_COMPILER_OPTIONS environment variable
     "compilerOptions": {
-      "module": "commonjs",
-      "types": ["cypress", "jest"],
-      "experimentalDecorators": true,
-      "paths": {
-        "@/*": ["../cypress/*"]
-      }
+      "module": "commonjs"
+
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "../cypress/*.cy.ts",
-    "**/*.tsx",
-    "../node_modules/cypress",
-    "../node_modules/@cypress",
-    "node_modules",   
-    "../cypress.config.ts"
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/.*/"
   ]
 }
+
 

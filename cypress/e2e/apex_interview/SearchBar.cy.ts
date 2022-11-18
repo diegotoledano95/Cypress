@@ -1,13 +1,25 @@
-import { test_data } from '../../fixtures/testData'
+import { testData } from '../../fixtures/testData'
+import homePage from '../../pages/homePage'
 
 describe('Search Bar',() => {
-    beforeEach('visits page', () =>{
-        cy.visit(test_data.page_url)
+
+    beforeEach('Visits Home Page', () =>{
+        cy.visit(('/'),{
+            headers:{
+                "Accept": "application/json, text/plain, */*",
+                "User-Agent": "axios/0.18.0" 
+            }
+        })
     })
 
-    it('first search', () =>{
-        cy.get('email-input').type('diego@subform.com')
-        cy.get('submit-button').click()
-        cy.get('success-message').should('exist')
+    it('should search product', () =>{
+        homePage.typeSearch(testData.firstProduct)
+
+        //cy.querySearch('iPhone 12')
+
+        cy.intercept(' https://www.liverpool.com.mx/getSearchFacadeService?s=iPhone 12', (response)=>{
+            console.log(response);
+            expect(response.body.mainContent.records[0]._t).to.have('iPhone 12');
+        })
     })
 })
