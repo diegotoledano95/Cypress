@@ -45,7 +45,7 @@ describe('Search Bar',() => {
 
         homePage.typeSearch(testDataSearch.secondProduct);
         homePage.checkUrl(testDataSearch.secondSearchUrl)
-        homePage.checkResult2(0)
+        homePage.checkResult2(0, testDataSearch.secondPrdoductString)
         homePage.clearSearch()
     });
 })

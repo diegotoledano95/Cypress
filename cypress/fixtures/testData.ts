@@ -4,6 +4,7 @@ const testDataSearch = {
   firstSearchUrl: 'https://www.liverpool.com.mx/tienda?s=iphone+12',
   not_found_string: 'onomatopeia',
   secondProduct: 'chaleco north face thermoball',
+  secondPrdoductString: 'Chaleco',
   secondSearchUrl: 'https://www.liverpool.com.mx/tienda?s=chaleco+north+face+thermoball'
 }
 

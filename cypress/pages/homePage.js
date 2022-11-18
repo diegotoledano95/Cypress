@@ -21,9 +21,9 @@ class homePage{
         cy.get('h5').eq(number).contains(product)
     }
 
-    checkResult2(number){
+    checkResult2(number,string){
         cy.get('h5').eq(number).then(x => {
-            expect(x.text()).to.have.string("Chaleco");
+            expect(x.text()).to.have.string(string);
           });
     }
 
